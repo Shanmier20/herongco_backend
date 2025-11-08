@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
@@ -7,28 +6,27 @@ const productRoutes = require("./routes/product.routes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ✅ CORS configuration
+// ✅ CORS configuration (includes OPTIONS for preflight)
 app.use(cors({
   origin: [
-    "http://localhost:5173", // Local dev
-    "https://jrmm-inventory-system.vercel.app", // ✅ Your deployed frontend
+    "http://localhost:5173",          // local dev frontend
+    "https://jrmm-inventory-system.vercel.app", // your deployed frontend
   ],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Include OPTIONS for preflight
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // ✅ include OPTIONS
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 }));
-
-// ✅ Handle OPTIONS preflight
-app.options("*", cors());
 
 // ✅ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Routes
+// ✅ Test route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the Product Inventory API." });
+  res.json({ message: "Welcome to the Simple Products REST API." });
 });
+
+// ✅ API routes
 app.use("/api/products", productRoutes);
 
 // ✅ Global error handler
@@ -42,6 +40,9 @@ app.use((err, req, res, next) => {
 
 // ✅ Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`🌐 API URL: http://localhost:${PORT}`);
+  console.log(`🚀 Server is running on port ${PORT}`);
+  console.log(`🌐 Access the API at http://localhost:${PORT}`);
 });
+
+
+
