@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors({
   origin: [
     "http://localhost:5173",          // local dev frontend
-    "https://herongco-frontend.vercel.app", // your deployed frontend
+    "https://jrmm-inventory-system.vercel.app", // your deployed frontend
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // ✅ include OPTIONS
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -43,6 +43,7 @@ app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
   console.log(`🌐 Access the API at http://localhost:${PORT}`);
 });
+
 
 
 
