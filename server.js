@@ -14,7 +14,6 @@ app.use(cors({
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // ✅ include OPTIONS
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
 }));
 
 // ✅ Middleware
@@ -43,6 +42,7 @@ app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
   console.log(`🌐 Access the API at http://localhost:${PORT}`);
 });
+
 
 
 
